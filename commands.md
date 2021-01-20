@@ -24,3 +24,19 @@
 > python manage.py migrate
 
 ### Run a development server
+
+> python manage.py runserver
+
+### Create an application
+
+> python manage.py startapp <application name>
+
+### Create new migrations for the database then show the sql output
+
+> python manage.py makemigrations <optional location>
+
+> python manage.py sqlmigrate <directory name> <migration number>
+
+### Create a database super user
+
+> python manage.py createsuperuser
