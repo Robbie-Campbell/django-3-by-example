@@ -1,5 +1,9 @@
+<!-- Snippet that accounts for pagination -->
+
 <div class="pagination">
     <span class="step-links">
+
+        <!-- Display before or after pages -->
         {% if page.has_previous %}
             <a href="?page={{ page.previous_page_number }}">Previous</a>
         {% endif %}

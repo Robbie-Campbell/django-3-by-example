@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Post
+from .models import Post, Comment
 
 # Register your models here.
 
@@ -27,3 +27,17 @@ class PostAdmin(admin.ModelAdmin):
 
     # Order by status first then publish date
     ordering = ('status', 'publish')
+
+
+# Create a specific admin Comment view
+@admin.register(Comment)
+class CommentAdmin(admin.ModelAdmin):
+
+    # Display the comments in this order
+    list_display = ('name', 'email', 'post', 'created', 'active')
+
+    # Allow the admin to narrow down search results
+    list_filter = ('active', 'created', 'updated')
+
+    # Search for the different posts based on these values
+    search_fields = ('name', 'email', 'body')
