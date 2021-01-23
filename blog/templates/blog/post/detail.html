@@ -1,6 +1,13 @@
+<!-- Take in the base information (css etc) -->
 {% extends "base.html" %}
+
+<!-- Set the title of the page -->
 {% block title %}{{ post.title }}{% endblock %}
+
+<!-- Put in all of the information -->
 {% block content %}
+
+    <!-- Display the title, and post information -->
     <h1>{{ post.title }}</h1>
     <p class="date">
         Published {{ post.publish }} by {{ post.author }}
@@ -11,11 +18,14 @@
             Share this post
         </a>
     </p>
+    <!-- Count the number of challenges -->
     {% with comments.count as total_comments %}
         <h2>
             {{ total_comments }} comment{{ total_comments|pluralize }}
         </h2>
     {% endwith %}
+
+    <!-- Display all of the comments on this post -->
     {% for comment in comments %}
     <div class="comment">
         <p class="info">
@@ -24,10 +34,14 @@
         </p>
         {{ comment.body|linebreaks }}
     </div>
+
+    <!-- Condition for no comments presently posted -->
     {% empty %}
         <p>There are no comments yet.</p>
     {% endfor %}
     <h2>Similar posts</h2>
+
+    <!-- Display posts with the same tag -->
     {% for post in similar_posts %}
         <p>
             <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
@@ -35,6 +49,8 @@
         {% empty %}
         There are no similar posts yet.
     {% endfor %}
+
+    <!-- Optional: create a new comment -->
     {% if new_comment %}
         <h2>Your comment has been added.</h2>
     {% else %}

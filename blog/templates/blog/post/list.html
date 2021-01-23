@@ -1,9 +1,14 @@
+<!-- Take in the base information (css etc) -->
 {% extends "base.html" %}
 
+<!-- Set the title of the page -->
 {% block title %} My Blog {% endblock %}
 
+<!-- The main content of the  -->
 {% block content %}
     <h1>My Blog</h1>
+
+    <!-- Link to the post and the tags for all posts -->
     {% if tag %}
         <h2>Posts tagged with "{{ tag.name }}"</h2>
     {% endif %}
@@ -24,5 +29,7 @@
         </p>
         {{ post.body|truncatewords:30|linebreaks }}
     {% endfor %}
+
+    <!-- Paginate the page -->
     {% include 'pagination.html' with page=posts %}
 {% endblock %}

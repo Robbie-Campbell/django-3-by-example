@@ -29,8 +29,15 @@ class PostAdmin(admin.ModelAdmin):
     ordering = ('status', 'publish')
 
 
+# Create a specific admin Comment view
 @admin.register(Comment)
 class CommentAdmin(admin.ModelAdmin):
+
+    # Display the comments in this order
     list_display = ('name', 'email', 'post', 'created', 'active')
+
+    # Allow the admin to narrow down search results
     list_filter = ('active', 'created', 'updated')
+
+    # Search for the different posts based on these values
     search_fields = ('name', 'email', 'body')

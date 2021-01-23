@@ -1,11 +1,20 @@
+<!-- Take in the base information (css etc) -->
 {% extends "base.html" %}
+
+<!-- Set the title of the page -->
 {% block title %}Share a post{% endblock %}
+
+<!-- Put in all of the information -->
 {% block content %}
+
+    <!-- Return this html if the user has shared a post -->
     {% if sent %}
         <h1>E-mail successfully sent</h1>
         <p>
         "{{ post.title }}" was successfully sent to {{ form.cleaned_data.to }}.
         </p>
+
+    <!-- The default html on the page -->
     {% else %}
         <h1>Share "{{ post.title }}" by e-mail</h1>
         <form method="post">
