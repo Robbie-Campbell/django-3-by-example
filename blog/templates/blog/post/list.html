@@ -1,5 +1,6 @@
 <!-- Take in the base information (css etc) -->
 {% extends "base.html" %}
+{% load blog_tags %}
 
 <!-- Set the title of the page -->
 {% block title %} My Blog {% endblock %}
@@ -27,7 +28,7 @@
                 {% if not forloop.last %}, {% endif %}
             {% endfor %}
         </p>
-        {{ post.body|truncatewords:30|linebreaks }}
+        {{ post.body|markdown|truncatewords_html:30 }}
     {% endfor %}
 
     <!-- Paginate the page -->
