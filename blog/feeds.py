@@ -3,10 +3,11 @@ from django.template.defaultfilters import truncatewords
 from django.urls import reverse_lazy
 from .models import Post
 
+# 
 class LatestPostsFeed(Feed):
     title = 'My Blog'
     link = reverse_lazy('blog:post_list')
-    description = 'New posts pof my blog'
+    description = 'New posts of my blog'
 
     def items(self):
         return Post.published.all()[:5]

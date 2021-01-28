@@ -14,5 +14,6 @@ class CommentForm(forms.ModelForm):
         model = Comment
         fields = ('name', 'email', 'body')
 
+# Simple search form for looking for posts
 class SearchForm(forms.Form):
     query = forms.CharField()

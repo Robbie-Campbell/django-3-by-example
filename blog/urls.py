@@ -4,6 +4,7 @@ from .feeds import LatestPostsFeed
 
 app_name = 'blog'
 
+# Give all of the paths to each of the pages
 urlpatterns = [
     path('', views.post_list, name='post_list'),
     # path("", views.PostListView.as_view(), name='post_list'),
