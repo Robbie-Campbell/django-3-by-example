@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 from pathlib import Path
-from .secret_settings import secret_key
+from .secret_settings import secret_key, twitter_key, twitter_secret, google_key, google_secret
 import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'social_django',
+    'django_extensions',
 ]
 
 MIDDLEWARE = [
@@ -106,6 +107,8 @@ AUTH_PASSWORD_VALIDATORS = [
 AUTHENTICATION_BACKENDS = [
  'django.contrib.auth.backends.ModelBackend',
  'account.authentication.EmailAuthBackend',
+ 'social_core.backends.twitter.TwitterOAuth',
+ 'social_core.backends.google.GoogleOAuth2',
 ]
 
 ALLOWED_HOSTS = ['mysite.com', 'localhost', '127.0.0.1']
@@ -136,3 +139,9 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+
+SOCIAL_AUTH_TWITTER_KEY = twitter_key
+SOCIAL_AUTH_TWITTER_SECRET = twitter_secret
+
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = google_key
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = google_secret
