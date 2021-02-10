@@ -9,10 +9,11 @@ https://docs.djangoproject.com/en/3.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
-
+from django.urls import reverse_lazy
 from pathlib import Path
 from .secret_settings import secret_key, twitter_key, twitter_secret, google_key, google_secret
 import os
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -112,6 +113,10 @@ AUTHENTICATION_BACKENDS = [
  'social_core.backends.twitter.TwitterOAuth',
  'social_core.backends.google.GoogleOAuth2',
 ]
+
+ABSOLUTE_URL_OVERRIDES = {
+    'auth.user': lambda u:reverse_lazy('user_detail', args=[u.username])
+}
 
 ALLOWED_HOSTS = ['mysite.com', 'localhost', '127.0.0.1']
 
